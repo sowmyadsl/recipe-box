@@ -1,0 +1,10 @@
+<form class="col-md-6" action="/edit_recipe/<%= @recipe_id %>/edit_ingredient/<%= @ingredient.id %>" method="post">
+  <h3>Edit Ingredient</h3>
+  <input type="hidden" name="_method" value="patch">
+  <label for="ingredient">Ingredient:</label>
+  <input type="text" name="ingredient" value="<%= @ingredient.name %>">
+  <br>
+  <label for="quantity">Quantity:</label>
+  <input type="text" name="quantity" value="<%= @ingredient.quantity %>">
+  <button type="submit" name="edit_ingredient"> Edit Ingredient</button>
+</form>

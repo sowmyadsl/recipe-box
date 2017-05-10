@@ -1,0 +1,10 @@
+<form class="col-md-6" action="/edit_recipe/<%= @recipe_id %>/edit_instruction/<%= @instruction.id %>" method="post">
+  <h3>Edit Instructions</h3>
+  <input type="hidden" name="_method" value="patch">
+  <label for="step">Step:</label>
+  <input type="text" name="step" value="<%= @instruction.step %>">
+  <br>
+  <label for="instruction">Instruction:</label><br>
+  <textarea type="text" name="instruction" value="<%= @instruction.instruction %>"></textarea><br>
+  <button type="submit" name="edit_instruction"> Edit Instruction</button>
+</form>

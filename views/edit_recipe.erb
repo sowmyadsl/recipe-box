@@ -1,17 +1,34 @@
 <h2>Edit <%= @recipe.title %></h2>
 
 <div class="row">
-  <form class="col-md-5" action="/edit_recipe/<%= @recipe.id %>/edit_recipe_name" method="post">
-    <input type="hidden" name="_method" value="patch">
-    <label for="title">Rename the Recipe:</label>
-    <input type="text" name="title">
-    <button type="submit" name="edit_recipe_name">Edit Name</button>
-  </form>
+  <div class="col-md-5">
+    <form action="/edit_recipe/<%= @recipe.id %>/edit_recipe_name" method="post">
+      <input type="hidden" name="_method" value="patch">
+      <label for="title">Rename the Recipe:</label>
+      <input type="text" name="title">
+      <button type="submit" name="edit_recipe_name">Edit Name</button>
+    </form>
+  </div>
 
   <form class="col-md-2" action="/edit_recipe/<%= @recipe.id %>/delete_recipe" method="post">
     <input type="hidden" name="_method" value="delete">
     <button type="submit" name="delete_recipe">Delete Recipe</button>
   </form>
+
+  <div class="col-md-5">
+    <form action="/edit_recipe/<%= @recipe.id %>/add_tag" method="post">
+      <label for="tag">Select a tag</label>
+      <select class="" name="tag_id">
+        <% @tags.each do |tag| %>
+          <option value="<%= tag.id %>"><%= tag.title %></option>
+          <% end %>
+      </select>
+      <button type="submit" name="add_tag">Add Tag</button>
+    </form>
+    <ul>
+      
+    </ul>
+  </div>
 </div>
 <hr>
 
@@ -31,8 +48,8 @@
     <label for="step">Step:</label>
     <input type="number" name="step">
     <br>
-    <label for="instruction">Instruction:</label>
-    <input type="text" name="instruction">
+    <label for="instruction">Instruction:</label><br>
+    <textarea type="text" name="instruction"></textarea>
     <button type="submit" name="create_instruction">Add Instruction</button>
   </form>
 </div>

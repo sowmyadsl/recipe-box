@@ -9,4 +9,13 @@ describe(Recipe) do
     end
   end
 
+  describe('.initialize') do
+    it('will create a link between a tag and a recipe') do
+      recipe = Recipe.create({:title => 'recipe_test'})
+      tag = Tag.create({:title => 'tag_test'})
+      recipe.tags.push(tag)
+      expect(recipe.tags).to eq ([tag])
+    end
+  end
+
 end

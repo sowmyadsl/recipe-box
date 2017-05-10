@@ -1,4 +1,13 @@
 <h2>Recipes</h2>
+<form class="" action="/sort_by_tag" method="get">
+  <label for="tag">Select a tag</label>
+  <select class="" name="tag">
+    <% @tags.each do |tag| %>
+      <option value="<%= tag.id %>"><%= tag.title %></option>
+      <% end %>
+  </select>
+  <button type="submit" name="select_tag">Sort</button>
+</form>
 <div class="row">
   <table class="col-md-6">
     <tr>
