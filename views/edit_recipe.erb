@@ -1,0 +1,92 @@
+<h2>Edit <%= @recipe.title %></h2>
+
+<div class="row">
+  <form class="col-md-5" action="/edit_recipe/<%= @recipe.id %>/edit_recipe_name" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <label for="title">Rename the Recipe:</label>
+    <input type="text" name="title">
+    <button type="submit" name="edit_recipe_name">Edit Name</button>
+  </form>
+
+  <form class="col-md-2" action="/edit_recipe/<%= @recipe.id %>/delete_recipe" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit" name="delete_recipe">Delete Recipe</button>
+  </form>
+</div>
+<hr>
+
+<div class="row">
+  <form class="col-md-6" action="/edit_recipe/<%= @recipe.id %>/create_ingredient" method="post">
+    <h3>Add Ingredient</h3>
+    <label for="ingredient">Ingredient:</label>
+    <input type="text" name="ingredient">
+    <br>
+    <label for="quantity">Quantity:</label>
+    <input type="text" name="quantity">
+    <button type="submit" name="create_ingredient">Add Ingredient</button>
+  </form>
+
+  <form class="col-md-6" action="/edit_recipe/<%= @recipe.id %>/create_instruction" method="post">
+    <h3>Add Instruction</h3>
+    <label for="step">Step:</label>
+    <input type="number" name="step">
+    <br>
+    <label for="instruction">Instruction:</label>
+    <input type="text" name="instruction">
+    <button type="submit" name="create_instruction">Add Instruction</button>
+  </form>
+</div>
+<hr>
+
+<div class="row">
+  <div class="col-md-6 center-text">
+    <h3>Ingredients:</h3>
+  </div>
+  <div class="col-md-6 center-text">
+    <h3>Instructions:</h3>
+  </div>
+</div>
+<div class="row">
+  <table class="col-md-6 center-text">
+    <tr>
+      <td>Quantity</td>
+      <td>Ingredient</td>
+      <td>Edit</td>
+    </tr>
+    <% @ingredients.each do |ingredient| %>
+      <tr>
+        <td><%= ingredient.quantity %></td>
+        <td><%= ingredient.name %></td>
+        <td>
+          <a href="/edit_recipe/<%= @recipe.id %>/edit_ingredient/<%= ingredient.id %>">
+            <button type="button" name="edit">Edit</button>
+          </a>
+          <a href="/edit_recipe/<%= @recipe.id %>/delete_ingredient/<%= ingredient.id %>">
+            <button type="button" name="delete">Delete</button>
+          </a>
+        </td>
+      </tr>
+      <% end %>
+  </table>
+  <table class="col-md-6 center-text">
+    <tr>
+      <td>Step</td>
+      <td>Instruction</td>
+      <td>Edit</td>
+    </tr>
+    <% @instructions.each do |instruction| %>
+      <tr>
+        <td><%= instruction.step %></td>
+        <td><%= instruction.instruction %></td>
+        <td>
+          <a href="/edit_recipe/<%= @recipe.id %>/edit_instruction/<%= instruction.id %>">
+            <button type="button" name="edit">Edit</button>
+          </a>
+          <a href="/edit_recipe/<%= @recipe.id %>/delete_instruction/<%= instruction.id %>">
+            <button type="button" name="delete">Delete</button>
+          </a>
+        </td>
+      </tr>
+      <% end %>
+  </table>
+</div>

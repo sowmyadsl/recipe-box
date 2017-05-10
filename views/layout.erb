@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recipes</title>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+  <link  rel='stylesheet' href="/css/styles.css" type="text/css">
+  <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar navbar-default">
+			<ul class="nav navbar-nav">
+				<li><a href="/">Home</a></li>
+        <li><a href="/create_recipe">Create Recipe</a></li>
+        <li><a href="/create_tag">Create Tag</a></li>
+			</ul>
+  	</nav>
+    <div class="jumbotron">
+      <h1>Recipes</h1>
+    </div>
+    <hr>
+    <div>
+    <%= yield %>
+    </div>
+  </div>
+</body>
+</html>
