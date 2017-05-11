@@ -1,17 +1,35 @@
 <h2>Recipes</h2>
-<form class="" action="/sort_by_tag" method="get">
-  <label for="tag">Select a tag</label>
-  <select class="" name="tag">
-    <% @tags.each do |tag| %>
-      <option value="<%= tag.id %>"><%= tag.title %></option>
-      <% end %>
-  </select>
-  <button type="submit" name="select_tag">Sort</button>
-</form>
+<div class="row">
+  <form class="col-md-4" action="/sort_by_tag" method="get">
+    <label for="tag">Select a tag</label>
+    <select class="" name="tag">
+      <% @tags.each do |tag| %>
+        <option value="<%= tag.id %>"><%= tag.title %></option>
+        <% end %>
+    </select>
+    <button type="submit" name="select_tag">Sort By Tag</button>
+  </form>
+  <form class="col-md-8" action="/sort_by_ingredient" method="get">
+    <label for="tag">Select a ingredient</label>
+    <select class="" name="ingredient">
+      <% @ingredients.each do |ingredient| %>
+        <option value="<%= ingredient.name %>"><%= ingredient.name %></option>
+        <% end %>
+    </select>
+    <button type="submit" name="select_ingredient">Sort By Ingredient</button>
+  </form>
+</div>
+<div class="row">
+  <form class="col-md-4" action="/sort_by_rating" method="get">
+    <button type="submit" name="sort_by_rating">Sort By Rating</button>
+  </form>
+  <form class="col-md-4" action="/all_recipes" method="get">
+    <button type="submit" name="all_recipes">All Recipes</button>
+  </form>
+</div>
 <div class="row">
   <table class="col-md-6">
     <tr>
-
       <td>Recipe</td>
       <td>Rating</td>
       <td>Edit</td>

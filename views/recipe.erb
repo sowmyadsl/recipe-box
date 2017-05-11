@@ -3,7 +3,7 @@
     <h2><%=@recipe.title %></h2>
   </div>
   <div class="col-md-6">
-    <form class="" action="/rate/<%= @recipe.id %>" method="post">
+    <form id="rating-form" action="/rate/<%= @recipe.id %>" method="post">
       <input type="hidden" name="_method" value="patch">
       <label for="input-1" class="control-label">Rate This</label>
       <input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="1" data-size="xs" value="<%= @recipe.rating %>">
@@ -12,7 +12,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-2">
     <h4> TAGS </h4>
     <ul>
       <% @recipe.tags.each do |tag| %>

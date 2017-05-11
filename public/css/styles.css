@@ -1,3 +1,46 @@
 .center-text {
   text-align: center;
 }
+body{
+  background: url('/img/recipe_background.jpg') no-repeat fixed;
+  background-size: cover;
+  color: #000;
+  text-shadow: -1px 1px #e6e4e2,
+               -1px -1px #e6e4e2,
+               1px -1px #e6e4e2,
+               1px 1px #e6e4e2;
+}
+*{
+  font-size: 25px;
+  font-family: 'Special Elite', cursive;
+}
+
+a {
+  color: #000;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+button {
+  margin-bottom: 10px;
+}
+
+#rating-form {
+  text-shadow: none;
+}
+
+.jumbotron, nav.navbar, button{
+  background: #874902;
+}
+
+nav.navbar a:hover, button:hover {
+  background: #000;
+  color: #874902;
+}
+
+button {
+  border-radius: 15px;
+
+}

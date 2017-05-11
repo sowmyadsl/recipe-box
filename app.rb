@@ -3,8 +3,40 @@ Bundler.require(:default)
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
 get '/' do
+  @ingredients = Ingredient.select('name').distinct.sort_by { |ingredient| ingredient.name.downcase }
   @recipes = Recipe.all
   @tags = Tag.all
+  erb :index
+end
+
+get '/all_recipes' do
+  @ingredients = Ingredient.select('name').distinct.sort_by { |ingredient| ingredient.name.downcase }
+  @tags = Tag.all
+  @recipes = Recipe.order('lower(title)')
+  erb :index
+end
+
+get '/sort_by_tag' do
+  tag_id = params.fetch('tag')
+  tag = Tag.find(tag_id)
+  @ingredients = Ingredient.select('name').distinct.sort_by { |ingredient| ingredient.name.downcase }
+  @recipes = tag.recipes
+  @tags = Tag.all
+  erb :index
+end
+
+get '/sort_by_ingredient' do
+  ingredient_name = params.fetch('ingredient')
+  @tags = Tag.all
+  @ingredients = Ingredient.select('name').distinct.sort_by { |ingredient| ingredient.name.downcase }
+  @recipes = Ingredient.recipes(ingredient_name)
+  erb :index
+end
+
+get '/sort_by_rating' do
+  @ingredients = Ingredient.select('name').distinct.sort_by { |ingredient| ingredient.name.downcase }
+  @tags = Tag.all
+  @recipes = Recipe.order(rating: :desc)
   erb :index
 end
 
