@@ -10,4 +10,5 @@ group(:test) do
   gem("capybara")
   gem("pry")
   gem 'pry-byebug'
+  gem 'shoulda-matchers', '< 2.1'
 end

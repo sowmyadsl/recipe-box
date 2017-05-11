@@ -39,7 +39,9 @@ end
 post '/edit_recipe/:id/add_tag' do
   recipe_id = params.fetch('id').to_i
   tag_id = params.fetch('tag_id').to_i
-  RecipeTag.create({:recipe_id => recipe_id, :tag_id => tag_id})
+  tag = Tag.find(tag_id)
+  recipe = Recipe.find(recipe_id)
+  recipe.tags.push(tag)
   redirect "/edit_recipe/#{recipe_id}"
 end
 
@@ -124,4 +126,26 @@ post '/create_tag' do
   title = params.fetch('title')
   Tag.create({:title => title})
   redirect '/'
+end
+
+get '/edit_recipe/:recipe_id/delete_tag/:tag_id' do
+  recipe_id = params.fetch('recipe_id').to_i
+  tag_id = params.fetch('tag_id').to_i
+  tag = Tag.find(tag_id)
+  tag.destroy
+  redirect "/edit_recipe/#{recipe_id}"
+end
+
+get '/recipes/:id' do
+  id = params.fetch('id').to_i
+  @recipe = Recipe.find(id)
+  erb :recipe
+end
+
+patch '/rate/:id' do
+  id = params.fetch('id').to_i
+  rating = params.fetch('input-1').to_i
+  recipe = Recipe.find(id)
+  recipe.update({:rating => rating})
+  redirect "/recipes/#{id}"
 end

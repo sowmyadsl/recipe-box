@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-md-6">
+    <h2><%=@recipe.title %></h2>
+  </div>
+  <div class="col-md-6">
+    <form class="" action="/rate/<%= @recipe.id %>" method="post">
+      <input type="hidden" name="_method" value="patch">
+      <label for="input-1" class="control-label">Rate This</label>
+      <input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="1" data-size="xs" value="<%= @recipe.rating %>">
+      <button type="submit" name="rate">Rate</button>
+    </form>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <h4> TAGS </h4>
+    <ul>
+      <% @recipe.tags.each do |tag| %>
+      <li><%= tag.title %></li>
+      <%end %>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <h3> INGREDIENTS </h3>
+    <table class="col-md-7">
+      <tr>
+        <th>Quantity</th>
+        <th>Ingredient</th>
+      </tr>
+      <% @recipe.ingredients.each do |ingredient| %>
+      <tr>
+        <td><%= ingredient.quantity %></td>
+        <td><%= ingredient.name %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+<div class ="row">
+  <h3> INSTRUCTIONS </h3>
+  <table>
+    <tr>
+      <th class="col-md-2">step</th>
+      <th class="col-md-10">instruction</th>
+    </tr>
+    <% @recipe.instructions.each do |instruction|%>
+    <tr>
+      <td><%= instruction.step %></td>
+      <td><%= instruction.instruction%></td>
+    </tr>
+    <% end %>
+  </table>
+</div>

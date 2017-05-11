@@ -25,9 +25,25 @@
       </select>
       <button type="submit" name="add_tag">Add Tag</button>
     </form>
-    <ul>
-      
-    </ul>
+    <h4>Associated Tags</h4>
+    <div class="row">
+      <table class="col-md-6">
+        <tr>
+          <th>Tag</th>
+          <th>Edit</th>
+        </tr>
+        <% @recipe.tags.each do |tag| %>
+          <tr>
+            <td><%= tag.title %></td>
+            <td>
+              <a href="/edit_recipe/<%= @recipe.id %>/delete_tag/<%= tag.id %>">
+                <button type="button" name="delete">Delete</button>
+              </a>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
 </div>
 <hr>
